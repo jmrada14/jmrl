@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href="https://fonts.googleapis.com/css?family=Prata" rel="stylesheet" />
+    <title>Juan M. Rada León</title>
+    <style>
+        :root {
+            --bg-color-light: #ffffff;
+            --text-color-light: #260b0b;
+            --subtle-color-light: #666;
+
+            --bg-color-dark: #111;
+            --text-color-dark: #f5f5f5;
+            --subtle-color-dark: #919191;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: "Prata";
+            line-height: 1.6;
+            color: var(--text-color-light);
+            background-color: var(--bg-color-light);
+            max-width: 700px;
+            margin: 0 auto;
+            padding: 3rem 1rem;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 2rem;
+            padding-bottom: 1rem;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+        }
+
+        .header h1 {
+            font-size: 1.5rem;
+            font-weight: 600;
+        }
+
+        .header a {
+            color: var(--subtle-color-light);
+            text-decoration: none;
+            font-size: 0.9rem;
+        }
+
+        .about {
+            margin-bottom: 2rem;
+        }
+
+        .projects h2 {
+            font-size: 1.2rem;
+            margin-bottom: 1rem;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+            padding-bottom: 0.5rem;
+        }
+
+        .project {
+            margin-bottom: 1.5rem;
+        }
+
+        .project h3 {
+            font-size: 1rem;
+            margin-bottom: 0.5rem;
+        }
+
+        @media (max-width: 600px) {
+            .header {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+        }
+
+        p {
+            color: var(--subtle-color-dark);
+        }
+
+        /* Dark Mode Styles */
+        body.dark-mode {
+            background-color: var(--bg-color-dark);
+            color: var(--text-color-dark);
+        }
+
+        .dark-mode .header {
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .dark-mode p {
+            color: var(--subtle-color-dark);
+        }
+
+        .dark-mode .header a {
+            color: var(--subtle-color-dark);
+        }
+
+        .terminal {
+            background-color: #2d2d2d;
+            border-radius: 5px;
+            padding: 20px;
+            margin-bottom: 2rem;
+            font-family: "Courier New", Courier, monospace;
+            color: #f0f0f0;
+        }
+
+        .terminal-header {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 10px;
+        }
+
+        .terminal-buttons {
+            display: flex;
+        }
+
+        .terminal-button {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            margin-right: 6px;
+        }
+
+        .terminal-button.red {
+            background-color: #ff5f56;
+        }
+
+        .terminal-button.yellow {
+            background-color: #ffbd2e;
+        }
+
+        .terminal-button.green {
+            background-color: #27c93f;
+        }
+
+        .terminal-content {
+            font-size: 14px;
+        }
+
+        .terminal-line {
+            margin-bottom: 5px;
+        }
+
+        .terminal-prompt {
+            color: #5af78e;
+        }
+
+        /* Toggle Button Styles */
+        .toggle-container {
+            display: flex;
+            align-items: center;
+            cursor: pointer;
+        }
+
+        .toggle-checkbox {
+            display: none;
+        }
+
+        .toggle {
+            width: 34px;
+            height: 20px;
+            background-color: #ccc;
+            border-radius: 50px;
+            position: relative;
+            transition: background-color 0.3s;
+        }
+
+        .toggle:before {
+            content: "";
+            position: absolute;
+            top: 2px;
+            left: 2px;
+            width: 16px;
+            height: 16px;
+            background-color: white;
+            border-radius: 50%;
+            transition: transform 0.3s;
+        }
+
+        .toggle-checkbox:checked+.toggle {
+            background-color: grey;
+        }
+
+        .toggle-checkbox:checked+.toggle:before {
+            transform: translateX(14px);
+        }
+
+        .toggle-icon {
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            margin-left: 8px;
+            background: url("sun-icon.svg") center center / contain no-repeat;
+            transition: background-image 0.3s;
+        }
+
+        .dark-mode .toggle-icon {
+            background: url("moon-icon.svg") center center / contain no-repeat;
+        }
+
+        .client {
+            padding-left: 1rem;
+        }
+    </style>
+</head>
+
+<body>
+    <header class="header">
+        <div>
+            <h1>Juan M. Rada León</h1>
+            <a href="/blog">Visit my blog</a>
+        </div>
+        <label class="toggle-container">
+            <input type="checkbox" class="toggle-checkbox" id="theme-toggle" />
+            <span class="toggle"></span>
+            <span class="toggle-icon"></span>
+        </label>
+    </header>
+
+    <main>
+        <section class="about">
+            <p>
+                I'm a software engineer originally from the Venezuelan Andes, with a
+                passion for transformative technology and innovation. My journey has
+                been driven by a deep love for web development, cloud technologies,
+                and creating impactful digital solutions.
+            </p>
+            <br />
+            <p>
+                Beyond programming, I'm passionate about building things that matter.
+                Whether it's developing financial infrastructure, exploring machine
+                learning innovations, or creating solutions that simplify
+                technological challenges, I'm always looking to make a meaningful
+                impact in the tech world.
+            </p>
+            <br />
+            <p>
+                I'm always open to connecting with fellow technologists, discussing
+                innovative ideas, or exploring new opportunities. Feel free to reach
+                out and connect.
+            </p>
+        </section>
+
+        <section class="projects">
+            <h2>Career:</h2>
+            <div class="project">
+                <h3>JP Morgan Chase</h3>
+                <p>
+                    At JP Morgan Chase, I currently work on building systems for
+                    merchants, focusing on enhancing payment processing, transaction
+                    security, and overall operational efficiency. My role involves
+                    developing scalable, secure, and user-friendly solutions that
+                    empower merchants to better manage payments, streamline
+                    transactions, and improve customer experiences. By leveraging
+                    cutting-edge technology, I contribute to the creation of innovative
+                    tools that drive growth and operational excellence for merchant
+                    partners.
+                </p>
+            </div>
+
+            <div class="project">
+                <h3>Infosys</h3>
+                <p>
+                    As a consultant at Infosys, I worked on impactful projects for
+                    multiple clients, contributing to the development and enhancement of
+                    systems and user experiences across various industries. My work
+                    involved leveraging cutting-edge technologies to solve complex
+                    business challenges, optimize workflows, and improve user
+                    satisfaction. Some of the key clients and projects I contributed to
+                    include:
+                </p>
+
+                <div class="client">
+                    <br />
+                    <h4>Allstate</h4>
+                    <p>
+                        Collaborated on the development of Allstate's next-generation
+                        online insurance shopping experience, focusing on creating a
+                        modern, intuitive user interface that simplifies the complex
+                        process of selecting and purchasing insurance products. Worked
+                        closely with design and product teams to implement a responsive,
+                        user-centric UI that streamlines the customer journey from quote
+                        to purchase.
+                    </p>
+                </div>
+                <br />
+                <div class="client">
+                    <h4>BP</h4>
+                    <p>
+                        At BP, I worked on developing AI-driven applications designed to
+                        improve operations and enhance contractor handling. This included
+                        building intelligent systems that optimized workflows and
+                        streamlined contractor interactions for greater efficiency.
+                        Additionally, I contributed to the development of a suite of
+                        Product Management tools that leverage AI to standardize
+                        processes, improve decision-making, and elevate the overall PM
+                        experience. These tools were aimed at simplifying complex tasks,
+                        increasing productivity, and fostering better collaboration across
+                        teams.
+                    </p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <noscript>
+        <p style="color: red">
+            JavaScript is disabled. The theme toggle will not work.
+        </p>
+    </noscript>
+
+    <script>
+        const themeToggle = document.getElementById("theme-toggle");
+
+        // Apply saved theme preference
+        if (localStorage.getItem("dark-mode") === "enabled") {
+            document.body.classList.add("dark-mode");
+            themeToggle.checked = true;
+        }
+
+        // Toggle theme and update icon dynamically
+        themeToggle.addEventListener("change", function () {
+            if (this.checked) {
+                document.body.classList.add("dark-mode");
+                localStorage.setItem("dark-mode", "enabled");
+            } else {
+                document.body.classList.remove("dark-mode");
+                localStorage.setItem("dark-mode", "disabled");
+            }
+        });
+    </script>
+</body>
+
+</html>

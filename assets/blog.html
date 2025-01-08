@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href="https://fonts.googleapis.com/css?family=Prata" rel="stylesheet" />
+    <title>Juan M. Rada León - Blog</title>
+    <style>
+        :root {
+            --bg-color-light: #ffffff;
+            --text-color-light: #260b0b;
+            --subtle-color-light: #666;
+
+            --bg-color-dark: #111;
+            --text-color-dark: #f5f5f5;
+            --subtle-color-dark: #919191;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: "Prata";
+            line-height: 1.6;
+            color: var(--text-color-light);
+            background-color: var(--bg-color-light);
+            max-width: 700px;
+            margin: 0 auto;
+            padding: 3rem 1rem;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 2rem;
+            padding-bottom: 1rem;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+        }
+
+        .header h1 {
+            font-size: 1.5rem;
+            font-weight: 600;
+        }
+
+        .header a {
+            color: var(--subtle-color-light);
+            text-decoration: none;
+            font-size: 0.9rem;
+        }
+
+        .blog-post {
+            margin-bottom: 2rem;
+            padding-bottom: 1rem;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+        }
+
+        .blog-post:last-child {
+            border-bottom: none;
+        }
+
+        .blog-post h2 {
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .blog-post-meta {
+            font-size: 0.9rem;
+            color: var(--subtle-color-light);
+            margin-bottom: 0.5rem;
+        }
+
+        .blog-post-description {
+            color: var(--subtle-color-light);
+        }
+
+        @media (max-width: 600px) {
+            .header {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+        }
+
+        /* Dark Mode Styles */
+        body.dark-mode {
+            background-color: var(--bg-color-dark);
+            color: var(--text-color-dark);
+        }
+
+        .dark-mode .header {
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .dark-mode .blog-post {
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .dark-mode .blog-post-meta,
+        .dark-mode .blog-post-description {
+            color: var(--subtle-color-dark);
+        }
+
+        .dark-mode .header a {
+            color: var(--subtle-color-dark);
+        }
+
+        /* Toggle Button Styles */
+        .toggle-container {
+            display: flex;
+            align-items: center;
+            cursor: pointer;
+        }
+
+        .toggle-checkbox {
+            display: none;
+        }
+
+        .toggle {
+            width: 34px;
+            height: 20px;
+            background-color: #ccc;
+            border-radius: 50px;
+            position: relative;
+            transition: background-color 0.3s;
+        }
+
+        .toggle:before {
+            content: "";
+            position: absolute;
+            top: 2px;
+            left: 2px;
+            width: 16px;
+            height: 16px;
+            background-color: white;
+            border-radius: 50%;
+            transition: transform 0.3s;
+        }
+
+        .toggle-checkbox:checked+.toggle {
+            background-color: grey;
+        }
+
+        .toggle-checkbox:checked+.toggle:before {
+            transform: translateX(14px);
+        }
+
+        .toggle-icon {
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            margin-left: 8px;
+            background: url("sun-icon.svg") center center / contain no-repeat;
+            transition: background-image 0.3s;
+        }
+
+        .dark-mode .toggle-icon {
+            background: url("moon-icon.svg") center center / contain no-repeat;
+        }
+    </style>
+</head>
+
+<body>
+    <header class="header">
+        <div>
+            <h1>Juan M. Rada León - Blog</h1>
+            <a href="index.html">Back to Home</a>
+        </div>
+        <label class="toggle-container">
+            <input type="checkbox" class="toggle-checkbox" id="theme-toggle" />
+            <span class="toggle"></span>
+            <span class="toggle-icon"></span>
+        </label>
+    </header>
+
+    <main>
+        <article class="blog-post">
+            <h2>The Future of Web Development: Embracing AI and Machine Learning</h2>
+            <div class="blog-post-meta">Published on May 15, 2023</div>
+            <div class="blog-post-description">
+                Exploring the integration of AI and machine learning in web development and its potential to
+                revolutionize user experiences and development processes.
+            </div>
+        </article>
+
+        <article class="blog-post">
+            <h2>The Importance of Accessibility in Modern Web Design</h2>
+            <div class="blog-post-meta">Published on April 28, 2023</div>
+            <div class="blog-post-description">
+                Discussing the critical role of accessibility in creating inclusive web experiences and its impact on
+                user engagement and legal compliance.
+            </div>
+        </article>
+
+        <article class="blog-post">
+            <h2>Optimizing Performance in React Applications</h2>
+            <div class="blog-post-meta">Published on April 10, 2023</div>
+            <div class="blog-post-description">
+                Practical tips and techniques for improving the performance of React applications, including code
+                splitting, memoization, and efficient state management.
+            </div>
+        </article>
+
+        <article class="blog-post">
+            <h2>The Rise of Serverless Architecture</h2>
+            <div class="blog-post-meta">Published on March 22, 2023</div>
+            <div class="blog-post-description">
+                An overview of serverless architecture, its benefits for scalability and cost-efficiency, and how it's
+                changing the landscape of web development.
+            </div>
+        </article>
+
+        <article class="blog-post">
+            <h2>Mastering CSS Grid for Responsive Layouts</h2>
+            <div class="blog-post-meta">Published on March 5, 2023</div>
+            <div class="blog-post-description">
+                A deep dive into CSS Grid, exploring its powerful features for creating complex, responsive layouts with
+                ease and flexibility.
+            </div>
+        </article>
+    </main>
+
+    <noscript>
+        <p style="color: red">
+            JavaScript is disabled. The theme toggle will not work.
+        </p>
+    </noscript>
+
+    <script>
+        const themeToggle = document.getElementById("theme-toggle");
+
+        // Apply saved theme preference
+        if (localStorage.getItem("dark-mode") === "enabled") {
+            document.body.classList.add("dark-mode");
+            themeToggle.checked = true;
+        }
+
+        // Toggle theme and update icon dynamically
+        themeToggle.addEventListener("change", function () {
+            if (this.checked) {
+                document.body.classList.add("dark-mode");
+                localStorage.setItem("dark-mode", "enabled");
+            } else {
+                document.body.classList.remove("dark-mode");
+                localStorage.setItem("dark-mode", "disabled");
+            }
+        });
+    </script>
+</body>
+
+</html>
