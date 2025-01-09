@@ -1,8 +1,4 @@
-use axum::{
-    response::{Html, Redirect},
-    routing::get,
-    Router,
-};
+use axum::{extract::Path, response::Html, routing::get, Router};
 use pulldown_cmark::{html, Parser};
 use serde::Deserialize;
 use std::fs;
@@ -10,6 +6,7 @@ use tower_http::services::ServeDir;
 
 #[derive(Clone)]
 struct AppState {
+    #[allow(dead_code)]
     domain: String,
     posts: Vec<BlogPost>,
 }
@@ -20,6 +17,7 @@ struct BlogPost {
     date: String,
     description: String,
     content: String,
+    path: String,
 }
 
 #[shuttle_runtime::main]
@@ -35,6 +33,7 @@ async fn main() -> shuttle_axum::ShuttleAxum {
         .route("/", get(serve_index))
         .route("/blog", get(serve_blog))
         .nest_service("/assets", ServeDir::new("assets"))
+        .route("/blog/:post", get(serve_blog_post)) // Add route for individual posts
         .with_state(state);
 
     Ok(router.into())
@@ -54,14 +53,14 @@ async fn serve_blog(
 
     // Insert blog posts into template
     let mut blog_content = String::new();
-    for post in state.posts {
+    for post in &state.posts {
         blog_content.push_str(&format!(
             r#"<article class="blog-post">
-                <h2>{}</h2>
+                <a href="/blog/{}">{}</a>
                 <div class="blog-post-meta">Published on {}</div>
                 <div class="blog-post-description">{}</div>
             </article>"#,
-            post.title, post.date, post.description
+            post.path, post.title, post.date, post.description
         ));
     }
 
@@ -78,20 +77,23 @@ fn load_blog_posts() -> std::io::Result<Vec<BlogPost>> {
         let entry = entry?;
         if entry.path().extension().and_then(|s| s.to_str()) == Some("md") {
             let content = fs::read_to_string(entry.path())?;
-            // Parse frontmatter and markdown
-            if let Some(post) = parse_blog_post(&content) {
+            let filename = entry
+                .path()
+                .file_stem()
+                .and_then(|s| s.to_str())
+                .unwrap_or_default()
+                .to_string();
+            if let Some(mut post) = parse_blog_post(&content, &filename) {
+                post.path = filename; // Store filename as path
                 posts.push(post);
             }
         }
     }
-
-    // Sort posts by date, newest first
     posts.sort_by(|a, b| b.date.cmp(&a.date));
     Ok(posts)
 }
 
-fn parse_blog_post(content: &str) -> Option<BlogPost> {
-    // Simple frontmatter parser - you may want to use a proper YAML parser
+fn parse_blog_post(content: &str, filename: &str) -> Option<BlogPost> {
     let parts: Vec<&str> = content.split("---").collect();
     if parts.len() < 3 {
         return None;
@@ -124,10 +126,36 @@ fn parse_blog_post(content: &str) -> Option<BlogPost> {
     let mut html_output = String::new();
     html::push_html(&mut html_output, parser);
 
+    // Remove .md extension for the path
+    let path = filename.strip_suffix(".md").unwrap_or(filename).to_string();
+
     Some(BlogPost {
         title: title.to_string(),
         date: date.to_string(),
         description: description.to_string(),
         content: html_output,
+        path,
     })
+}
+async fn serve_blog_post(
+    axum::extract::State(state): axum::extract::State<AppState>,
+    Path(post_path): Path<String>,
+) -> impl axum::response::IntoResponse {
+    if let Some(post) = state.posts.iter().find(|p| p.path == post_path) {
+        let template = fs::read_to_string("assets/blog.html").unwrap_or_else(|_| "404".to_string());
+
+        let blog_content = format!(
+            r#"<article class="blog-post">
+                <h1>{}</h1>
+                <div class="blog-post-meta">Published on {}</div>
+                <div class="blog-post-content">{}</div>
+            </article>"#,
+            post.title, post.date, post.content
+        );
+
+        let html = template.replace("<!-- BLOG_POSTS -->", &blog_content);
+        Html(html)
+    } else {
+        Html("<h1>404 Not Found</h1>".to_string())
+    }
 }
