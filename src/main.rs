@@ -37,7 +37,7 @@ async fn main() -> shuttle_axum::ShuttleAxum {
         posts,
     };
 
-    let router = Router::new()
+    let router: Router = Router::new()
         .route("/", get(serve_index))
         .route("/blog", get(serve_blog))
         .nest_service(
