@@ -4,7 +4,7 @@ use pulldown_cmark::{html, Parser};
 use serde::Deserialize;
 use std::fs;
 use tower::{Layer, ServiceBuilder};
-use tower_http::compression::{predicate::SizeAbove, CompressionLayer, CompressionLevel};
+use tower_http::compression::{CompressionLayer, CompressionLevel};
 use tower_http::services::ServeDir;
 use tower_http::trace::TraceLayer;
 
@@ -58,7 +58,7 @@ async fn main() -> shuttle_axum::ShuttleAxum {
                         .br(true)
                         .gzip(true)
                         .deflate(true)
-                        .quality(CompressionLevel::Best)
+                        .quality(CompressionLevel::Best),
                 ),
         );
 
