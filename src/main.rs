@@ -1,8 +1,12 @@
-use axum::{extract::Path, response::Html, routing::get, Router};
+use axum::http::{header, HeaderValue};
+use axum::{extract::Path, response::Response, routing::get, Router};
 use pulldown_cmark::{html, Parser};
 use serde::Deserialize;
 use std::fs;
+use tower::{Layer, ServiceBuilder};
+use tower_http::compression::{predicate::SizeAbove, CompressionLayer, CompressionLevel};
 use tower_http::services::ServeDir;
+use tower_http::trace::TraceLayer;
 
 #[derive(Clone)]
 struct AppState {
@@ -19,10 +23,14 @@ struct BlogPost {
     content: String,
     path: String,
 }
-
+fn cache_headers() -> [(&'static str, &'static str); 2] {
+    [
+        ("Cache-Control", "public, max-age=31536000, immutable"),
+        ("X-Content-Type-Options", "nosniff"),
+    ]
+}
 #[shuttle_runtime::main]
 async fn main() -> shuttle_axum::ShuttleAxum {
-    // Load and parse blog posts from assets/posts/*.md
     let posts = load_blog_posts().unwrap_or_default();
     let state = AppState {
         domain: "localhost:8000".to_string(),
@@ -32,27 +40,51 @@ async fn main() -> shuttle_axum::ShuttleAxum {
     let router = Router::new()
         .route("/", get(serve_index))
         .route("/blog", get(serve_blog))
-        .nest_service("/assets", ServeDir::new("assets"))
-        .route("/blog/:post", get(serve_blog_post)) // Add route for individual posts
-        .with_state(state);
+        .nest_service(
+            "/assets",
+            tower_http::set_header::SetResponseHeaderLayer::if_not_present(
+                header::CACHE_CONTROL,
+                HeaderValue::from_static("public, max-age=31536000, immutable"),
+            )
+            .layer(ServeDir::new("assets")),
+        )
+        .route("/blog/:post", get(serve_blog_post))
+        .with_state(state)
+        .layer(
+            ServiceBuilder::new()
+                .layer(TraceLayer::new_for_http())
+                .layer(
+                    CompressionLayer::new()
+                        .br(true)
+                        .gzip(true)
+                        .deflate(true)
+                        .quality(CompressionLevel::Best)
+                ),
+        );
 
     Ok(router.into())
 }
 
 async fn serve_index() -> impl axum::response::IntoResponse {
-    // Read and serve index.html
     let content = fs::read_to_string("assets/index.html").unwrap_or_else(|_| "404".to_string());
-    Html(content)
+    let mut response = Response::builder();
+
+    for (name, value) in cache_headers() {
+        response = response.header(name, value);
+    }
+
+    response
+        .header("Content-Type", "text/html; charset=utf-8")
+        .body(content)
+        .unwrap()
 }
 
 async fn serve_blog(
     axum::extract::State(state): axum::extract::State<AppState>,
 ) -> impl axum::response::IntoResponse {
-    // Read blog.html template
     let template = fs::read_to_string("assets/blog.html").unwrap_or_else(|_| "404".to_string());
-
-    // Insert blog posts into template
     let mut blog_content = String::new();
+
     for post in &state.posts {
         blog_content.push_str(&format!(
             r#"<article class="blog-post">
@@ -64,11 +96,18 @@ async fn serve_blog(
         ));
     }
 
-    // Replace placeholder in template with blog content
     let html = template.replace("<!-- BLOG_POSTS -->", &blog_content);
-    Html(html)
-}
+    let mut response = Response::builder();
 
+    for (name, value) in cache_headers() {
+        response = response.header(name, value);
+    }
+
+    response
+        .header("Content-Type", "text/html; charset=utf-8")
+        .body(html)
+        .unwrap()
+}
 fn load_blog_posts() -> std::io::Result<Vec<BlogPost>> {
     let mut posts = Vec::new();
     let posts_dir = fs::read_dir("assets/posts")?;
@@ -137,13 +176,13 @@ fn parse_blog_post(content: &str, filename: &str) -> Option<BlogPost> {
         path,
     })
 }
+
 async fn serve_blog_post(
     axum::extract::State(state): axum::extract::State<AppState>,
     Path(post_path): Path<String>,
 ) -> impl axum::response::IntoResponse {
     if let Some(post) = state.posts.iter().find(|p| p.path == post_path) {
-        let template = fs::read_to_string("assets/blog.html").unwrap_or_else(|_| "404".to_string());
-
+        let template = fs::read_to_string("assets/post.html").unwrap_or_else(|_| "404".to_string());
         let blog_content = format!(
             r#"<article class="blog-post">
                 <h1>{}</h1>
@@ -154,8 +193,27 @@ async fn serve_blog_post(
         );
 
         let html = template.replace("<!-- BLOG_POSTS -->", &blog_content);
-        Html(html)
+        let mut response = Response::builder();
+
+        for (name, value) in cache_headers() {
+            response = response.header(name, value);
+        }
+
+        response
+            .header("Content-Type", "text/html; charset=utf-8")
+            .body(html)
+            .unwrap()
     } else {
-        Html("<h1>404 Not Found</h1>".to_string())
+        let mut response = Response::builder();
+
+        for (name, value) in cache_headers() {
+            response = response.header(name, value);
+        }
+
+        response
+            .header("Content-Type", "text/html; charset=utf-8")
+            .status(404)
+            .body("<h1>404 Not Found</h1>".to_string())
+            .unwrap()
     }
 }

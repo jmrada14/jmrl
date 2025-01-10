@@ -4,56 +4,52 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link href="https://fonts.googleapis.com/css?family=Prata" rel="stylesheet" />
-    <title>Juan M. Rada León</title>
+    <meta http-equiv="Cache-Control" content="public, max-age=31536000" />
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="pageshow" content="event.persisted" />
+    <meta name="pagehide" content="event.persisted" />
+    <!-- Preload critical resources -->
+    <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Prata&display=swap">
+
+    <!-- CSS Loading -->
+    <link rel="stylesheet" href="/assets/static/style.css">
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <!-- Async load Google Fonts -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Prata&display=swap" media="print"
+        onload="this.media='all'">
+    <!-- JavaScript -->
+    <script src="/assets/static/index.js" defer></script>
+
+    <!-- Theme Variables -->
     <style>
         :root {
             --bg-color-light: #ffffff;
             --text-color-light: #260b0b;
-            --subtle-color-light: #585858;
-
+            --subtle-color-light: #666;
             --bg-color-dark: #111;
             --text-color-dark: #f5f5f5;
-            --subtle-color-dark: #a7a7a7;
-        }
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
+            --subtle-color-dark: #919191;
         }
 
         body {
-            font-family: "Prata";
-            line-height: 1.6;
-            color: var(--text-color-light);
-            background-color: var(--bg-color-light);
-            max-width: 700px;
-            margin: 0 auto;
-            padding: 3rem 1rem;
-            transition: background-color 0.3s, color 0.3s;
+            visibility: hidden;
         }
+    </style>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            document.body.style.visibility = 'visible';
+        });
+    </script>
 
-        .header {
-            display: flex;
-            justify-content: space-between;
-            align-items: flex-start;
-            margin-bottom: 2rem;
-            padding-bottom: 1rem;
-            border-bottom: 1px solid rgba(0, 0, 0, 0.1);
-        }
-
-        .header h1 {
-            font-size: 1.5rem;
-            font-weight: 600;
-        }
-
-        .header a {
-            color: var(--subtle-color-light);
-            text-decoration: none;
-            font-size: 0.9rem;
-        }
-
+    <!-- NoScript Fallbacks -->
+    <noscript>
+        <p style="color: red">JavaScript is disabled. The theme toggle will not work.</p>
+    </noscript>
+    <title>Juan M. Rada León</title>
+    <style>
         .about {
             margin-bottom: 2rem;
         }
@@ -74,136 +70,12 @@
             margin-bottom: 0.5rem;
         }
 
-        @media (max-width: 600px) {
-            .header {
-                flex-direction: column;
-                align-items: flex-start;
-            }
-        }
-
         p {
             color: var(--subtle-color-light);
         }
 
-        /* Dark Mode Styles */
-        body.dark-mode {
-            background-color: var(--bg-color-dark);
-            color: var(--text-color-dark);
-        }
-
-        .dark-mode .header {
-            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-        }
-
         .dark-mode p {
             color: var(--subtle-color-dark);
-        }
-
-        .dark-mode .header a {
-            color: var(--subtle-color-dark);
-        }
-
-        .terminal {
-            background-color: #2d2d2d;
-            border-radius: 5px;
-            padding: 20px;
-            margin-bottom: 2rem;
-            font-family: "Courier New", Courier, monospace;
-            color: #f0f0f0;
-        }
-
-        .terminal-header {
-            display: flex;
-            justify-content: space-between;
-            margin-bottom: 10px;
-        }
-
-        .terminal-buttons {
-            display: flex;
-        }
-
-        .terminal-button {
-            width: 12px;
-            height: 12px;
-            border-radius: 50%;
-            margin-right: 6px;
-        }
-
-        .terminal-button.red {
-            background-color: #ff5f56;
-        }
-
-        .terminal-button.yellow {
-            background-color: #ffbd2e;
-        }
-
-        .terminal-button.green {
-            background-color: #27c93f;
-        }
-
-        .terminal-content {
-            font-size: 14px;
-        }
-
-        .terminal-line {
-            margin-bottom: 5px;
-        }
-
-        .terminal-prompt {
-            color: #5af78e;
-        }
-
-        /* Toggle Button Styles */
-        .toggle-container {
-            display: flex;
-            align-items: center;
-            cursor: pointer;
-        }
-
-        .toggle-checkbox {
-            display: none;
-        }
-
-        .toggle {
-            width: 34px;
-            height: 20px;
-            background-color: #ccc;
-            border-radius: 50px;
-            position: relative;
-            transition: background-color 0.3s;
-        }
-
-        .toggle:before {
-            content: "";
-            position: absolute;
-            top: 2px;
-            left: 2px;
-            width: 16px;
-            height: 16px;
-            background-color: white;
-            border-radius: 50%;
-            transition: transform 0.3s;
-        }
-
-        .toggle-checkbox:checked+.toggle {
-            background-color: grey;
-        }
-
-        .toggle-checkbox:checked+.toggle:before {
-            transform: translateX(14px);
-        }
-
-        .toggle-icon {
-            display: inline-block;
-            width: 20px;
-            height: 20px;
-            margin-left: 8px;
-            background: url("sun-icon.svg") center center / contain no-repeat;
-            transition: background-image 0.3s;
-        }
-
-        .dark-mode .toggle-icon {
-            background: url("moon-icon.svg") center center / contain no-repeat;
         }
 
         .client {
@@ -310,33 +182,6 @@
             </div>
         </section>
     </main>
-
-    <noscript>
-        <p style="color: red">
-            JavaScript is disabled. The theme toggle will not work.
-        </p>
-    </noscript>
-
-    <script>
-        const themeToggle = document.getElementById("theme-toggle");
-
-        // Apply saved theme preference
-        if (localStorage.getItem("dark-mode") === "enabled") {
-            document.body.classList.add("dark-mode");
-            themeToggle.checked = true;
-        }
-
-        // Toggle theme and update icon dynamically
-        themeToggle.addEventListener("change", function () {
-            if (this.checked) {
-                document.body.classList.add("dark-mode");
-                localStorage.setItem("dark-mode", "enabled");
-            } else {
-                document.body.classList.remove("dark-mode");
-                localStorage.setItem("dark-mode", "disabled");
-            }
-        });
-    </script>
 </body>
 
 </html>
