@@ -7,6 +7,7 @@ use tower::{Layer, ServiceBuilder};
 use tower_http::compression::{CompressionLayer, CompressionLevel};
 use tower_http::services::ServeDir;
 use tower_http::trace::TraceLayer;
+use tracing_subscriber::filter::{EnvFilter, LevelFilter};
 
 #[derive(Clone)]
 struct AppState {
@@ -31,6 +32,15 @@ fn cache_headers() -> [(&'static str, &'static str); 2] {
 }
 #[shuttle_runtime::main]
 async fn main() -> shuttle_axum::ShuttleAxum {
+    tracing_subscriber::fmt()
+        .with_env_filter(
+            EnvFilter::builder()
+                .with_default_directive(LevelFilter::INFO.into())
+                .from_env_lossy(),
+        )
+        .init();
+    tracing::info!("tracing is initialized");
+
     let posts = load_blog_posts().unwrap_or_default();
     let state = AppState {
         domain: "localhost:8000".to_string(),
@@ -65,7 +75,9 @@ async fn main() -> shuttle_axum::ShuttleAxum {
     Ok(router.into())
 }
 
+#[tracing::instrument(name = "index")]
 async fn serve_index() -> impl axum::response::IntoResponse {
+    tracing::info!("serving index",);
     let content = fs::read_to_string("assets/index.html").unwrap_or_else(|_| "404".to_string());
     let mut response = Response::builder();
 
@@ -185,14 +197,16 @@ async fn serve_blog_post(
         let template = fs::read_to_string("assets/post.html").unwrap_or_else(|_| "404".to_string());
         let blog_content = format!(
             r#"<article class="blog-post">
-                <h1>{}</h1>
-                <div class="blog-post-meta">Published on {}</div>
                 <div class="blog-post-content">{}</div>
             </article>"#,
-            post.title, post.date, post.content
+            post.content
         );
 
-        let html = template.replace("<!-- BLOG_POSTS -->", &blog_content);
+        let html = template
+            .replace("<!-- BLOG_TITLE -->", &post.title)
+            .replace("<!-- BLOG_DATE -->", &post.date)
+            .replace("<!-- BLOG_POSTS -->", &blog_content);
+
         let mut response = Response::builder();
 
         for (name, value) in cache_headers() {
