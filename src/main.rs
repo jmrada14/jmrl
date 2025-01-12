@@ -30,8 +30,8 @@ fn cache_headers() -> [(&'static str, &'static str); 2] {
         ("X-Content-Type-Options", "nosniff"),
     ]
 }
-#[shuttle_runtime::main]
-async fn main() -> shuttle_axum::ShuttleAxum {
+#[tokio::main]
+async fn main() {
     tracing_subscriber::fmt()
         .with_env_filter(
             EnvFilter::builder()
@@ -72,7 +72,8 @@ async fn main() -> shuttle_axum::ShuttleAxum {
                 ),
         );
 
-    Ok(router.into())
+    let listener = tokio::net::TcpListener::bind("0.0.0.0:8080").await.unwrap();
+    axum::serve(listener, router).await.unwrap();
 }
 
 #[tracing::instrument(name = "index")]

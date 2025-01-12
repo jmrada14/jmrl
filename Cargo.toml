@@ -8,12 +8,15 @@ axum = {version = "0.7.9"}
 maxminddb = "0.24.0"
 pulldown-cmark = "0.12.2"
 serde = {version = "1.0.217", features = ["derive"]}
-shuttle-axum = "0.50.0"
-shuttle-metadata = "0.42.0"
-shuttle-runtime = { version = "0.50.0", default-features = false }
-tokio = { version = "1.43.0", features = ["fs"] }
+tokio = { version = "1.43.0", features = ["fs", "rt-multi-thread"] }
 tower = {version = "0.5.2", features = ["full"] }
 tower-http = { version = "0.6.2", features = ["full"] }
 tracing = "0.1.41"
 tracing-subscriber = { version="0.3.19", features = ["env-filter"] }
 user-agent-parser = "0.3.6"
+
+[profile.release]
+lto = true
+codegen-units = 1
+panic = "abort"
+opt-level = 3
