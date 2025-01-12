@@ -4,42 +4,84 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- SEO Meta Tags -->
+    <meta name="description"
+        content="Juan M. Rada León - Software Engineer specializing in financial technology, cloud computing, and AI solutions. Experience at JP Morgan Chase and Infosys." />
+    <meta name="keywords"
+        content="Juan Rada León, Software Engineer, FinTech, Cloud Computing, AI, JP Morgan Chase, Infosys, Web Development" />
+    <meta name="author" content="Juan M. Rada León" />
+    <meta name="robots" content="index, follow" />
+    <link rel="canonical" href="https://juanrada.dev" />
+
+    <!-- Performance Meta Tags -->
     <meta http-equiv="Cache-Control" content="public, max-age=31536000" />
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <meta name="pageshow" content="event.persisted" />
-    <meta name="pagehide" content="event.persisted" />
-    <!-- Preload critical resources -->
-    <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Prata&display=swap">
-    <!-- CSS Loading -->
-    <link rel="stylesheet" href="/assets/static/style.css">
-    <!-- Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <!-- Async load Google Fonts -->
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta name="theme-color" content="#ffffff" />
+
+    <!-- Open Graph Meta Tags -->
+    <meta property="og:title" content="Juan M. Rada León - Software Engineer" />
+    <meta property="og:description"
+        content="Software engineer specializing in financial technology, cloud computing, and AI solutions." />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://juanrada.dev" />
+    <meta property="og:locale" content="en_US" />
+
+    <!-- Twitter Card Meta Tags -->
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:title" content="Juan M. Rada León - Software Engineer" />
+    <meta name="twitter:description"
+        content="Software engineer specializing in financial technology, cloud computing, and AI solutions." />
+
+    <!-- Resource Hints -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Prata&display=swap" />
+    <link rel="stylesheet" href="/assets/static/style.css" />
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Prata&display=swap" media="print"
-        onload="this.media='all'">
-    <!-- JavaScript -->
+        onload="this.media='all'" />
+
     <script src="/assets/static/index.js" defer></script>
-    <!-- NoScript Fallbacks -->
+
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Person",
+      "name": "Juan M. Rada León",
+      "jobTitle": "Software Engineer",
+      "url": "https://jrada.dev",
+      "worksFor": {
+        "@type": "Organization",
+        "name": "JP Morgan Chase"
+      },
+      "knowsAbout": ["Software Engineering", "Financial Technology", "Cloud Computing", "Artificial Intelligence"]
+    }
+    </script>
+
+    <title>Juan M. Rada León</title>
+
     <noscript>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Prata&display=swap" />
         <p style="color: red">JavaScript is disabled. The theme toggle will not work.</p>
     </noscript>
-    <title>Juan M. Rada León</title>
 </head>
 
 <body>
-    <header class="header">
+    <header class="header" role="banner">
         <div>
             <h1>Juan M. Rada León</h1>
-            <a href="/blog">Visit my blog</a>
+            <nav role="navigation">
+                <a href="/blog" aria-label="Visit my blog">Visit my blog</a>
+            </nav>
         </div>
-        <label class="toggle-container">
-            <input type="checkbox" class="toggle-checkbox" id="theme-toggle" />
+        <label class="toggle-container" for="theme-toggle">
+            <input type="checkbox" class="toggle-checkbox" id="theme-toggle" aria-label="Toggle dark mode" />
             <span class="toggle"></span>
-            <span class="toggle-icon"></span>
+            <span class="toggle-icon" aria-hidden="true"></span>
         </label>
     </header>
-    <main>
-        <section class="about">
+    <main role="main">
+        <section class="about" aria-labelledby="about-heading">
             <p>
                 I'm a software engineer originally from the Venezuelan Andes, with a
                 passion for transformative technology and innovation. My journey has
@@ -61,9 +103,9 @@
                 out and connect.
             </p>
         </section>
-        <section class="projects">
+        <section class="projects" aria-labelledby="career-heading">
             <br />
-            <h2>Career:</h2>
+            <h2 id="career-heading">Career:</h2>
             <div class="project">
                 <h3>JP Morgan Chase</h3>
                 <p>
@@ -120,6 +162,9 @@
             </div>
         </section>
     </main>
+    <footer role="contentinfo">
+        <p>&copy; 2024 Juan M. Rada León. All rights reserved.</p>
+    </footer>
 </body>
 
 </html>
