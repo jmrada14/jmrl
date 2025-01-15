@@ -8,9 +8,24 @@
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <meta name="pageshow" content="event.persisted" />
     <meta name="pagehide" content="event.persisted" />
-   <!-- Preload critical resources -->
-   <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Prata&display=swap">
-    
+    <!-- SEO Meta Tags -->
+    <meta name="description"
+        content="Personal blog of Juan M. Rada León - Software Engineer sharing insights about technology, programming, and software development." />
+    <meta name="author" content="Juan M. Rada León" />
+    <meta name="robots" content="index, follow" />
+    <link rel="canonical" href="https://yourdomain.com/blog" />
+
+    <!-- Open Graph Meta Tags -->
+    <meta property="og:title" content="Juan M. Rada León - Blog | Software Engineering Insights" />
+    <meta property="og:description"
+        content="Personal blog of Juan M. Rada León - Software Engineer sharing insights about technology, programming, and software development." />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://yourdomain.com/blog" />
+    <meta property="og:image" content="https://yourdomain.com/assets/images/og-image.jpg" />
+
+    <!-- Preload critical resources -->
+    <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Prata&display=swap">
+
     <!-- CSS Loading -->
     <link rel="stylesheet" href="/assets/static/style.css">
 
@@ -25,6 +40,20 @@
     <noscript>
         <p style="color: red">JavaScript is disabled. The theme toggle will not work.</p>
     </noscript>
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+        {
+          "@context": "https://schema.org",
+          "@type": "Blog",
+          "headline": "Juan M. Rada León - Software Engineering Blog",
+          "author": {
+            "@type": "Person",
+            "name": "Juan M. Rada León"
+          },
+          "description": "Personal blog of Juan M. Rada León - Software Engineer sharing insights about technology, programming, and software engineering.",
+          "url": "https://jrada.dev/blog"
+        }
+        </script>
     <title>Juan M. Rada León - Blog</title>
 
 </head>
