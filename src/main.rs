@@ -9,14 +9,14 @@ use tower_http::services::ServeDir;
 use tower_http::trace::TraceLayer;
 use tracing_subscriber::filter::{EnvFilter, LevelFilter};
 
-#[derive(Clone)]
+#[derive(Clone, Debug)]
 struct AppState {
     #[allow(dead_code)]
     domain: String,
     posts: Vec<BlogPost>,
 }
 
-#[derive(Deserialize, Clone)]
+#[derive(Deserialize, Clone, Debug)]
 struct BlogPost {
     title: String,
     date: String,
@@ -92,10 +92,19 @@ async fn serve_index() -> impl axum::response::IntoResponse {
         .unwrap()
 }
 
+#[tracing::instrument(name = "blog")]
 async fn serve_blog(
     axum::extract::State(state): axum::extract::State<AppState>,
 ) -> impl axum::response::IntoResponse {
-    let template = fs::read_to_string("assets/blog.html").unwrap_or_else(|_| "404".to_string());
+    tracing::info!("serving blog page");
+    let template = fs::read_to_string("assets/blog.html").unwrap_or_else(|e| {
+        tracing::error!("failed to read blog template: {}", e);
+        "404".to_string()
+    });
+
+    let post_count = state.posts.len();
+    tracing::debug!("rendering {} blog posts", post_count);
+
     let mut blog_content = String::new();
 
     for post in &state.posts {
@@ -190,12 +199,19 @@ fn parse_blog_post(content: &str, filename: &str) -> Option<BlogPost> {
     })
 }
 
+#[tracing::instrument(name = "blog_post", fields(post_path = %post_path))]
 async fn serve_blog_post(
     axum::extract::State(state): axum::extract::State<AppState>,
     Path(post_path): Path<String>,
 ) -> impl axum::response::IntoResponse {
+    tracing::info!("serving blog post: {}", post_path);
+
     if let Some(post) = state.posts.iter().find(|p| p.path == post_path) {
-        let template = fs::read_to_string("assets/post.html").unwrap_or_else(|_| "404".to_string());
+        tracing::debug!("found post: {}", post.title);
+        let template = fs::read_to_string("assets/post.html").unwrap_or_else(|e| {
+            tracing::error!("failed to read post template: {}", e);
+            "404".to_string()
+        });
         let blog_content = format!(
             r#"<article class="blog-post">
                 <div class="blog-post-content">{}</div>
@@ -219,6 +235,7 @@ async fn serve_blog_post(
             .body(html)
             .unwrap()
     } else {
+        tracing::warn!("post not found: {}", post_path);
         let mut response = Response::builder();
 
         for (name, value) in cache_headers() {
