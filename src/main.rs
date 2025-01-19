@@ -23,6 +23,7 @@ struct BlogPost {
     description: String,
     content: String,
     path: String,
+    metatags: String,
 }
 fn cache_headers() -> [(&'static str, &'static str); 2] {
     [
@@ -180,7 +181,12 @@ fn parse_blog_post(content: &str, filename: &str) -> Option<BlogPost> {
         .split("description:")
         .nth(1)?
         .trim();
-
+    let metatags = frontmatter
+        .lines()
+        .find(|l| l.starts_with("metatags:"))?
+        .split("metatags:")
+        .nth(1)?
+        .trim();
     // Parse markdown content
     let markdown = parts[2];
     let parser = Parser::new(markdown);
@@ -196,6 +202,7 @@ fn parse_blog_post(content: &str, filename: &str) -> Option<BlogPost> {
         description: description.to_string(),
         content: html_output,
         path,
+        metatags: metatags.to_string(),
     })
 }
 
@@ -222,7 +229,15 @@ async fn serve_blog_post(
         let html = template
             .replace("<!-- BLOG_TITLE -->", &post.title)
             .replace("<!-- BLOG_DATE -->", &post.date)
-            .replace("<!-- BLOG_POSTS -->", &blog_content);
+            .replace("<!-- BLOG_POSTS -->", &blog_content)
+            .replace(
+                "<!-- META_TAGS -->",
+                &format!(
+                    r#"<meta name="keywords" content="{}">
+               <meta name="description" content="{}">"#,
+                    post.metatags, post.description
+                ),
+            );
 
         let mut response = Response::builder();
 
