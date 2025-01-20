@@ -21,6 +21,8 @@
 
     <!-- CSS Loading -->
     <link rel="stylesheet" href="/assets/static/style.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/themes/prism-tomorrow.min.css">
+
 
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -33,6 +35,31 @@
     <noscript>
         <p style="color: red">JavaScript is disabled. The theme toggle will not work.</p>
     </noscript>
+    <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/prism.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/components/prism-rust.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/components/prism-python.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/components/prism-bash.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/components/prism-javascript.min.js"></script>
+
+    <!-- Auto Language Detection -->
+    <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/plugins/autoloader/prism-autoloader.min.js"></script>
+
+    <script>
+        // Initialize Prism
+        window.Prism = window.Prism || {};
+        Prism.manual = true;
+
+        // Configure after load
+        document.addEventListener('DOMContentLoaded', (event) => {
+            // Highlight all code blocks
+            Prism.highlightAll();
+
+            // Set default language if none specified
+            document.querySelectorAll('pre code:not([class*="language-"])').forEach(block => {
+                block.classList.add('language-plaintext');
+            });
+        });
+    </script>
     <title>Juan M. Rada León - Blog</title>
 
 </head>
