@@ -103,9 +103,6 @@ async fn serve_blog(
         "404".to_string()
     });
 
-    let post_count = state.posts.len();
-    tracing::debug!("rendering {} blog posts", post_count);
-
     let mut blog_content = String::new();
 
     for post in &state.posts {
