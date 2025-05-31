@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Offline - Juan M. Rada León</title>
+    <link rel="stylesheet" href="/static/css/style.css">
+    <link rel="icon" type="image/x-icon" href="/static/images/favicon.ico">
+    <style>
+        .offline-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 80vh;
+            text-align: center;
+            padding: 2rem;
+        }
+        .offline-icon {
+            font-size: 4rem;
+            margin-bottom: 1rem;
+            opacity: 0.6;
+        }
+        .offline-title {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            color: var(--text-color);
+        }
+        .offline-message {
+            font-size: 1.1rem;
+            color: var(--subtle-color);
+            max-width: 500px;
+            line-height: 1.6;
+            margin-bottom: 2rem;
+        }
+        .retry-button {
+            background-color: var(--accent-color);
+            color: white;
+            border: none;
+            padding: 0.75rem 1.5rem;
+            border-radius: 6px;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        .retry-button:hover {
+            transform: translateY(-2px);
+            opacity: 0.9;
+        }
+    </style>
+</head>
+<body>
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+    
+    <header class="header" role="banner">
+        <div class="header-content">
+            <h1 class="site-title">
+                <a href="/" aria-label="Juan M. Rada León - About">Juan M. Rada León</a>
+            </h1>
+            <nav class="main-nav" role="navigation" aria-label="Main navigation">
+                <ul>
+                    <li><a href="/">About</a></li>
+                    <li><a href="/blog">Blog</a></li>
+                </ul>
+            </nav>
+        </div>
+        <button class="theme-toggle" id="theme-toggle" aria-label="Toggle dark mode" type="button">
+            <span class="theme-toggle-icon" aria-hidden="true"></span>
+        </button>
+    </header>
+
+    <main id="main-content" class="main-content" role="main">
+        <div class="container">
+            <div class="offline-container">
+                <div class="offline-icon">📶</div>
+                <h1 class="offline-title">You're Offline</h1>
+                <p class="offline-message">
+                    It looks like you're not connected to the internet. Please check your connection and try again.
+                    Some previously visited pages might still be available.
+                </p>
+                <button class="retry-button" onclick="window.location.reload()">
+                    Try Again
+                </button>
+            </div>
+        </div>
+    </main>
+
+    <footer class="footer" role="contentinfo">
+        <div class="container">
+            <p>Juan M. Rada León. </p>
+        </div>
+    </footer>
+
+    <script src="/static/js/app.js"></script>
+</body>
+</html>

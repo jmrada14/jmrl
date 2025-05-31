@@ -1,0 +1,30 @@
+# Website Configuration
+[site]
+title = "Juan M. Rada León"
+domain = "jrada.dev"
+description = "Software Engineer specializing in financial technology, product engineering, and AI-driven solutions. Currently building next-generation payment systems at JP Morgan Chase."
+author = "Juan M. Rada León"
+language = "en"
+keywords = "Software Engineer, FinTech, Financial Technology, product engineering, AI, Machine Learning, Rust, TypeScript, Cloud Computing, Payment Systems"
+
+[server]
+host = "0.0.0.0"
+port = 3000
+
+[cache]
+static_files_max_age = 31536000  # 1 year
+html_max_age = 3600             # 1 hour
+
+[social]
+linkedin = "https://linkedin.com/in/juanrada"
+github = "https://github.com/juanrada"
+email = "juan@jrada.dev"
+twitter = "https://twitter.com/juanrada"
+
+[seo]
+google_site_verification = ""  # Add your Google Search Console verification code
+bing_site_verification = ""    # Add your Bing Webmaster verification code
+
+[analytics]
+google_analytics_id = ""  # Optional: Add your GA4 ID
+plausible_domain = ""     # Optional: Add your Plausible domain

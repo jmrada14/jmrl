@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="Cache-Control" content="public, max-age=31536000" />
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="pageshow" content="event.persisted" />
+    <meta name="pagehide" content="event.persisted" />
+    <!-- SEO Meta Tags -->
+    <meta name="description"
+        content="Personal blog of Juan M. Rada León - Software Engineer sharing insights about financial technology, product engineering, AI, and software development best practices." />
+    <meta name="author" content="Juan M. Rada León" />
+    <meta name="robots" content="index, follow" />
+    <link rel="canonical" href="https://<!-- SITE_DOMAIN -->/blog" />
+
+    <!-- Open Graph Meta Tags -->
+    <meta property="og:title" content="Juan M. Rada León - Blog | Software Engineering Insights" />
+    <meta property="og:description"
+        content="Personal blog of Juan M. Rada León - Software Engineer sharing insights about financial technology, product engineering, AI, and software development best practices." />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://<!-- SITE_DOMAIN -->/blog" />
+    <meta property="og:image" content="https://<!-- SITE_DOMAIN -->/static/images/og-image.jpg" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:site_name" content="Juan M. Rada León" />
+    
+    <!-- Twitter Card Meta Tags -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Juan M. Rada León - Blog" />
+    <meta name="twitter:description" content="Software engineering insights, fintech discussions, and technical tutorials." />
+    <meta name="twitter:image" content="https://<!-- SITE_DOMAIN -->/static/images/og-image.jpg" />
+    <meta name="twitter:creator" content="@juanrada" />
+    <meta name="twitter:site" content="@juanrada" />
+
+    <!-- CSS Loading -->
+    <link rel="stylesheet" href="/static/css/style.css">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="/static/images/favicon.ico">
+
+    <link rel="manifest" href="/manifest.json">
+    
+    <!-- JavaScript -->
+    <script src="/static/js/app.js" defer></script>
+    
+    <!-- Service Worker Registration -->
+    <script>
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', () => {
+                navigator.serviceWorker.register('/static/sw.js')
+                    .then(registration => {
+                        console.log('SW registered: ', registration);
+                    })
+                    .catch(registrationError => {
+                        console.log('SW registration failed: ', registrationError);
+                    });
+            });
+        }
+    </script>
+    <!-- NoScript Fallbacks -->
+    <noscript>
+        <p style="color: red">JavaScript is disabled. The theme toggle will not work.</p>
+    </noscript>
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+        {
+          "@context": "https://schema.org",
+          "@type": "Blog",
+          "headline": "Juan M. Rada León - Software Engineering Blog",
+          "author": {
+            "@type": "Person",
+            "name": "Juan M. Rada León",
+            "jobTitle": "Software Engineer",
+            "worksFor": {
+              "@type": "Organization",
+              "name": "JP Morgan Chase"
+            },
+            "url": "https://<!-- SITE_DOMAIN -->",
+            "sameAs": [
+              "https://linkedin.com/in/juanrada",
+              "https://github.com/juanrada",
+              "https://twitter.com/juanrada"
+            ]
+          },
+          "description": "Personal blog of Juan M. Rada León - Software Engineer sharing insights about financial technology, product engineering, AI, and software development best practices.",
+          "url": "https://<!-- SITE_DOMAIN -->/blog",
+          "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "https://<!-- SITE_DOMAIN -->/blog"
+          },
+          "publisher": {
+            "@type": "Person",
+            "name": "Juan M. Rada León"
+          },
+          "inLanguage": "en-US",
+          "keywords": ["Software Engineering", "Financial Technology", "product engineering", "AI", "Programming", "Web Development"]
+        }
+        </script>
+    <title>Juan M. Rada León - Blog</title>
+
+</head>
+
+<body>
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+    
+    <header class="header" role="banner">
+        <div class="header-content">
+            <h1 class="site-title">
+                <a href="/" aria-label="Juan M. Rada León - About">Juan M. Rada León</a>
+            </h1>
+            <nav class="main-nav" role="navigation" aria-label="Main navigation">
+                <ul>
+                    <li><a href="/" aria-current="false">About</a></li>
+                    <li><a href="/blog" aria-current="page">Blog</a></li>
+                </ul>
+            </nav>
+        </div>
+        <button class="theme-toggle" id="theme-toggle" aria-label="Toggle dark mode" type="button">
+            <span class="theme-toggle-icon" aria-hidden="true"></span>
+        </button>
+    </header>
+
+    <main id="main-content" class="main-content" role="main">
+        <div class="container">
+            <section class="blog-posts" aria-labelledby="blog-heading">
+                <h2 id="blog-heading" class="visually-hidden">Blog Posts</h2>
+                <!-- BLOG_POSTS -->
+            </section>
+        </div>
+    </main>
+
+    <footer class="footer" role="contentinfo">
+        <div class="container">
+            <p>Juan M. Rada León. </p>
+            <nav class="footer-nav" aria-label="Footer navigation">
+                <ul>
+                    <li><a href="/sitemap.xml">Sitemap</a></li>
+                    <li><a href="/feed.xml">RSS</a></li>
+                </ul>
+            </nav>
+        </div>
+    </footer>
+</body>
+
+</html>

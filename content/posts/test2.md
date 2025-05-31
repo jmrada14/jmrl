@@ -1,8 +1,9 @@
 ---
-title: The Future of Web Development: Embracing test
-date: 2023-05-16
-description: Exploring the integration of AI and machine learning in web development and its potential to revolutionize user experiences and development processes.
-metatags: web development, AI, machine learning, user experience, development processes
+title: Building Scalable Rust Applications: Best Practices and Design Patterns
+date: 2023-06-20
+description: Learn essential design patterns and best practices for building robust, scalable Rust applications that can handle real-world production workloads.
+tags: ["rust", "programming", "scalability", "best practices", "software architecture"]
+excerpt: Master the art of building production-ready Rust applications with proven design patterns, error handling strategies, and performance optimization techniques.
 ---
 
 
@@ -12,11 +13,10 @@ This is a demonstration of various Markdown styles that will be rendered in our 
 ### Code Examples
 Here's a simple JavaScript function:
 
-``` python
-def add(a, b):
-    return a + b
-
-print(add(5, 3))
+```javascript
+function greet(name) {
+    return `Hello, ${name}!`;
+}
 ```
 
 ### Text Formatting

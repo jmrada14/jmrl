@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="Cache-Control" content="public, max-age=31536000" />
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="pageshow" content="event.persisted" />
+    <meta name="pagehide" content="event.persisted" />
+    
+    <!-- Dynamic Meta Tags -->
+    <meta name="description" content="<!-- BLOG_EXCERPT -->" />
+    <meta name="author" content="Juan M. Rada León" />
+    <meta name="robots" content="index, follow" />
+    <meta name="keywords" content="<!-- BLOG_TAGS_PLAIN -->" />
+    <link rel="canonical" href="https://jrada.dev/blog/<!-- BLOG_SLUG -->" />
+
+    <!-- Open Graph Tags -->
+    <meta property="og:title" content="<!-- BLOG_TITLE -->" />
+    <meta property="og:description" content="<!-- BLOG_EXCERPT -->" />
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="https://jrada.dev/blog/<!-- BLOG_SLUG -->" />
+    <meta property="og:image" content="https://jrada.dev/static/images/og-image.jpg" />
+    <meta property="article:published_time" content="<!-- BLOG_DATE -->" />
+    <meta property="article:author" content="Juan M. Rada León" />
+    <meta property="article:tag" content="<!-- BLOG_TAGS_PLAIN -->" />
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="<!-- BLOG_TITLE -->" />
+    <meta name="twitter:description" content="<!-- BLOG_EXCERPT -->" />
+    <meta name="twitter:image" content="https://jrada.dev/static/images/og-image.jpg" />
+
+    <!-- CSS Loading -->
+    <link rel="stylesheet" href="/static/css/style.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/themes/prism-tomorrow.min.css" media="print" onload="this.media='all'">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="/static/images/favicon.ico">
+    <link rel="manifest" href="/manifest.json">
+    
+    <!-- JavaScript -->
+    <script src="/static/js/app.js" defer></script>
+    
+    <!-- Service Worker Registration -->
+    <script>
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', () => {
+                navigator.serviceWorker.register('/static/sw.js')
+                    .then(registration => {
+                        console.log('SW registered: ', registration);
+                    })
+                    .catch(registrationError => {
+                        console.log('SW registration failed: ', registrationError);
+                    });
+            });
+        }
+    </script>
+    
+    <!-- Syntax Highlighting -->
+    <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/prism.min.js" defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/components/prism-rust.min.js" defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/components/prism-python.min.js" defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/components/prism-bash.min.js" defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/components/prism-javascript.min.js" defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/plugins/autoloader/prism-autoloader.min.js" defer></script>
+
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BlogPosting",
+      "headline": "<!-- BLOG_TITLE -->",
+      "description": "<!-- BLOG_EXCERPT -->",
+      "author": {
+        "@type": "Person",
+        "name": "Juan M. Rada León",
+        "url": "https://jrada.dev"
+      },
+      "datePublished": "<!-- BLOG_DATE -->",
+      "url": "https://jrada.dev/blog/<!-- BLOG_SLUG -->",
+      "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://jrada.dev/blog/<!-- BLOG_SLUG -->"
+      },
+      "publisher": {
+        "@type": "Person",
+        "name": "Juan M. Rada León",
+        "url": "https://jrada.dev"
+      },
+      "keywords": "<!-- BLOG_TAGS_PLAIN -->"
+    }
+    </script>
+
+    <title><!-- BLOG_TITLE --> | Juan M. Rada León</title>
+</head>
+
+<body>
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+    
+    <header class="header" role="banner">
+        <div class="header-content">
+            <h1 class="site-title">
+                <a href="/" aria-label="Juan M. Rada León - About">Juan M. Rada León</a>
+            </h1>
+            <nav class="main-nav" role="navigation" aria-label="Main navigation">
+                <ul>
+                    <li><a href="/" aria-current="false">About</a></li>
+                    <li><a href="/blog" aria-current="false">Blog</a></li>
+                </ul>
+            </nav>
+        </div>
+        <button class="theme-toggle" id="theme-toggle" aria-label="Toggle dark mode" type="button">
+            <span class="theme-toggle-icon" aria-hidden="true"></span>
+        </button>
+    </header>
+
+    <main id="main-content" class="main-content" role="main">
+        <div class="container">
+            <article class="blog-post" itemscope itemtype="http://schema.org/BlogPosting">
+                <header class="post-header">
+                    <h1 class="post-title" itemprop="headline"><!-- BLOG_TITLE --></h1>
+                    <div class="post-meta">
+                        <time class="post-date" datetime="<!-- BLOG_DATE -->" itemprop="datePublished">
+                            <!-- BLOG_DATE -->
+                        </time>
+                        <span class="post-reading-time" aria-label="Reading time">
+                            <!-- READING_TIME --> min read
+                        </span>
+                    </div>
+                    <div class="post-tags" itemprop="keywords">
+                        <!-- BLOG_TAGS -->
+                    </div>
+                </header>
+
+                <div class="post-content" itemprop="articleBody">
+                    <!-- BLOG_CONTENT -->
+                </div>
+
+                <footer class="post-footer">
+                    <nav class="post-nav" aria-label="Post navigation">
+                        <a href="/blog" class="back-to-blog">← Back to Blog</a>
+                    </nav>
+                    
+                    <div class="post-share">
+                        <h3>Share this post</h3>
+                        <ul class="share-buttons">
+                            <li>
+                                <a href="https://twitter.com/intent/tweet?url=https://jrada.dev/blog/<!-- BLOG_SLUG -->&text=<!-- BLOG_TITLE -->" 
+                                   target="_blank" rel="noopener" aria-label="Share on Twitter">
+                                    Twitter
+                                </a>
+                            </li>
+                            <li>
+                                <a href="https://www.linkedin.com/sharing/share-offsite/?url=https://jrada.dev/blog/<!-- BLOG_SLUG -->" 
+                                   target="_blank" rel="noopener" aria-label="Share on LinkedIn">
+                                    LinkedIn
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </footer>
+            </article>
+        </div>
+    </main>
+
+    <footer class="footer" role="contentinfo">
+        <div class="container">
+            <p>Juan M. Rada León. </p>
+            <nav class="footer-nav" aria-label="Footer navigation">
+                <ul>
+                    <li><a href="/sitemap.xml">Sitemap</a></li>
+                    <li><a href="/feed.xml">RSS</a></li>
+                </ul>
+            </nav>
+        </div>
+    </footer>
+
+    <script>
+        // Initialize Prism syntax highlighting after DOM is loaded
+        document.addEventListener('DOMContentLoaded', () => {
+            if (window.Prism) {
+                Prism.highlightAll();
+            }
+        });
+    </script>
+</body>
+
+</html>

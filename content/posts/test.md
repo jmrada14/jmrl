@@ -1,8 +1,9 @@
 ---
-title: The Future of Web Development: Embracing test
+title: The Future of Web Development: Embracing AI and Machine Learning
 date: 2023-05-16
 description: Exploring the integration of AI and machine learning in web development and its potential to revolutionize user experiences and development processes.
-metatags: web development, AI, machine learning, user experience, development processes
+tags: ["web development", "AI", "machine learning", "user experience", "technology"]
+excerpt: Dive into the exciting world of AI-powered web development and discover how machine learning is reshaping the way we build and interact with websites.
 ---
 
 
@@ -12,10 +13,11 @@ This is a demonstration of various Markdown styles that will be rendered in our 
 ### Code Examples
 Here's a simple JavaScript function:
 
-```javascript
-function greet(name) {
-    return `Hello, ${name}!`;
-}
+``` python
+def add(a, b):
+    return a + b
+
+print(add(5, 3))
 ```
 
 ### Text Formatting

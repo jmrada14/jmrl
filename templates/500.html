@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="robots" content="noindex, nofollow">
+    <title>500 - Server Error | Juan M. Rada León</title>
+    <link rel="stylesheet" href="/static/css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Prata&display=swap">
+    <link rel="icon" type="image/x-icon" href="/static/images/favicon.ico">
+</head>
+<body>
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+    
+    <header class="header" role="banner">
+        <div class="header-content">
+            <h1 class="site-title">
+                <a href="/" aria-label="Juan M. Rada León - About">Juan M. Rada León</a>
+            </h1>
+            <nav class="main-nav" role="navigation" aria-label="Main navigation">
+                <ul>
+                    <li><a href="/">About</a></li>
+                    <li><a href="/blog">Blog</a></li>
+                    <li><a href="/feed.xml" aria-label="RSS Feed">RSS</a></li>
+                </ul>
+            </nav>
+        </div>
+        <button class="theme-toggle" id="theme-toggle" aria-label="Toggle dark mode" type="button">
+            <span class="theme-toggle-icon" aria-hidden="true"></span>
+        </button>
+    </header>
+
+    <main id="main-content" class="main-content error-page" role="main">
+        <div class="container">
+            <div class="error-content">
+                <h1 class="error-code">500</h1>
+                <h2 class="error-title">Server Error</h2>
+                <p class="error-message">
+                    Something went wrong on our end. We're working to fix this issue. Please try again in a few moments.
+                </p>
+                <div class="error-actions">
+                    <a href="/" class="btn btn-primary">Go About</a>
+                    <button onclick="location.reload()" class="btn btn-secondary">Retry</button>
+                    <button onclick="history.back()" class="btn btn-tertiary">Go Back</button>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="footer" role="contentinfo">
+        <div class="container">
+            <p>Juan M. Rada León. </p>
+        </div>
+    </footer>
+
+    <script src="/static/js/app.js"></script>
+</body>
+</html>
