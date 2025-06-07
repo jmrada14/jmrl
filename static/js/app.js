@@ -268,42 +268,6 @@ class AccessibilityEnhancer {
 		});
 	}
 
-	addSkipLinks() {
-		// Add skip to main content link
-		const skipLink = document.createElement("a");
-		skipLink.href = "#main";
-		skipLink.textContent = "Skip to main content";
-		skipLink.className = "skip-link";
-		skipLink.style.cssText = `
-      position: absolute;
-      top: -40px;
-      left: 6px;
-      background: #000;
-      color: #fff;
-      padding: 8px;
-      text-decoration: none;
-      z-index: 1000;
-      border-radius: 4px;
-    `;
-
-		// Show skip link on focus
-		skipLink.addEventListener("focus", () => {
-			skipLink.style.top = "6px";
-		});
-
-		skipLink.addEventListener("blur", () => {
-			skipLink.style.top = "-40px";
-		});
-
-		document.body.insertBefore(skipLink, document.body.firstChild);
-
-		// Ensure main content has an ID
-		const main = document.querySelector("main");
-		if (main && !main.id) {
-			main.id = "main";
-		}
-	}
-
 	improveFormAccessibility() {
 		// Add proper labels and descriptions to form elements
 		const inputs = document.querySelectorAll("input, textarea, select");
