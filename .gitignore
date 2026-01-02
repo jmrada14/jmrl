@@ -1,7 +1,2 @@
-/target
-.shuttle*
-Secrets*.toml
-/dist
-/.vscode
-
-performance-results
+.DS_Store
+.vscode
