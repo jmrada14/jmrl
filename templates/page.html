@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#ede6da">
+
+    <title>{{title}}</title>
+    <meta name="description" content="{{description}}">
+    <meta name="author" content="Juan M. Rada León">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="{{canonical}}">
+
+    <meta property="og:type" content="{{ogType}}">
+    <meta property="og:title" content="{{title}}">
+    <meta property="og:description" content="{{description}}">
+    <meta property="og:url" content="{{canonical}}">
+    <meta property="og:site_name" content="Juan M. Rada León">
+    <meta property="og:locale" content="en_US">
+
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="{{title}}">
+    <meta name="twitter:description" content="{{description}}">
+
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90' font-family='system-ui,sans-serif' font-weight='400' fill='%232a2a2a'>λ</text></svg>">
+    <style>
+{{style}}
+    </style>
+{{jsonld}}
+</head>
+
+<body{{bodyAttrs}}>
+    <main>
+        <nav class="crumbs" aria-label="Breadcrumb">{{crumbs}}</nav>
+{{content}}
+        <footer>
+            <a href="/">← Home</a>{{footerExtra}}
+        </footer>
+    </main>
+</body>
+
+</html>

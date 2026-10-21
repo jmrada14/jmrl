@@ -8,52 +8,220 @@
     <link rel="dns-prefetch" href="https://github.com">
     <link rel="dns-prefetch" href="https://linkedin.com">
 
-    <title>Juan M. Rada León — Software Engineer</title>
+    <title>Juan M. Rada León — Applied AI Engineer</title>
     <meta name="description"
-        content="Software Engineer at JP Morgan Chase. Building AI-powered products and payment systems. Background in fintech, AI engineering, and full-stack development.">
+        content="Software engineer working on applied AI at JPMorganChase, building tools for merchants and their agents. Background across fintech, insurance, and energy.">
     <meta name="author" content="Juan M. Rada León">
     <meta name="robots" content="index, follow">
-    <link rel="canonical" href="https://jrada.dev">
+    <link rel="canonical" href="https://radaleon.com">
 
     <meta property="og:type" content="website">
-    <meta property="og:title" content="Juan M. Rada León — Software Engineer">
+    <meta property="og:title" content="Juan M. Rada León — Applied AI Engineer">
     <meta property="og:description"
-        content="Software Engineer at JP Morgan Chase. Building AI-powered products and payment systems.">
-    <meta property="og:url" content="https://jrada.dev">
+        content="Software engineer working on applied AI at JPMorganChase, building tools for merchants and their agents.">
+    <meta property="og:url" content="https://radaleon.com">
     <meta property="og:site_name" content="Juan M. Rada León">
     <meta property="og:locale" content="en_US">
 
     <meta name="twitter:card" content="summary">
-    <meta name="twitter:title" content="Juan M. Rada León — Software Engineer">
+    <meta name="twitter:title" content="Juan M. Rada León — Applied AI Engineer">
     <meta name="twitter:description"
-        content="Software Engineer at JP Morgan Chase. Building AI-powered products and payment systems.">
+        content="Software engineer working on applied AI at JPMorganChase, building tools for merchants and their agents.">
 
-    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90' font-family='system-ui,sans-serif' font-weight='400' fill='%232a2a2a'>λ</text></svg>">
+    <link rel="icon"
+        href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90' font-family='system-ui,sans-serif' font-weight='400' fill='%232a2a2a'>λ</text></svg>">
     <style>
-        *{margin:0;padding:0;box-sizing:border-box}
-        html{-webkit-text-size-adjust:100%}
-        body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;font-size:clamp(16px,2.5vw,17px);line-height:1.7;font-weight:400;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;color:#3d3d3d;background:#ede6da;padding:clamp(2rem,5vw,4rem) clamp(1.25rem,5vw,2rem);min-height:100vh}
-        main{max-width:580px;margin:0 auto;width:100%}
-        header{margin-bottom:clamp(2rem,5vw,3rem)}
-        h1{font-size:clamp(1.5rem,4vw,2rem);font-weight:600;color:#2a2a2a;letter-spacing:-0.02em;word-wrap:break-word}
-        section{margin-bottom:clamp(2rem,5vw,3rem)}
-        section:last-child{margin-bottom:0}
-        h2{font-size:clamp(1.25rem,3vw,1.4rem);font-weight:600;color:#2a2a2a;margin-bottom:clamp(1rem,3vw,1.25rem)}
-        p{margin-bottom:1rem}
-        p:last-child{margin-bottom:0}
-        strong{font-weight:600;color:#2a2a2a}
-        article{margin-bottom:clamp(1.5rem,4vw,2rem)}
-        article:last-child{margin-bottom:0}
-        h3{font-size:clamp(0.95rem,2vw,1rem);font-weight:600;color:#3a3a3a}
-        .role{font-size:clamp(0.875rem,2vw,0.95rem);color:#555;margin-bottom:0.25rem}
-        .clients{font-size:clamp(0.825rem,1.8vw,0.875rem);color:#555}
-        nav{display:flex;flex-wrap:wrap;gap:0.75rem 1.5rem}
-        a{color:#4a4a4a;text-decoration:underline;text-decoration-color:#b0b0b0;text-underline-offset:3px;-webkit-tap-highlight-color:transparent}
-        a:hover{text-decoration-color:#4a4a4a}
-        a:focus-visible{outline:2px solid #4a4a4a;outline-offset:2px;border-radius:2px}
-        @media(max-width:360px){nav{flex-direction:column;gap:0.5rem}}
-        @media(prefers-reduced-motion:reduce){*{transition:none!important}}
-        @media print{body{background:#fff;color:#000;padding:1rem}a{color:#000;text-decoration:underline}}
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box
+        }
+
+        html {
+            -webkit-text-size-adjust: 100%
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            font-size: clamp(16px, 2.5vw, 17px);
+            line-height: 1.7;
+            font-weight: 400;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            color: #3d3d3d;
+            background: #ede6da;
+            padding: clamp(2.25rem, 5vw, 3.25rem) clamp(1.25rem, 5vw, 2rem);
+            min-height: 100vh
+        }
+
+        /* Mountains of the Sierra Nevada de Mérida, fixed to the bottom of the viewport. */
+        body::before {
+            content: "";
+            position: fixed;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            z-index: -1;
+            height: clamp(220px, min(42vh, 60vw), 500px);
+            background: url(/andes.svg) center bottom / cover no-repeat;
+            pointer-events: none
+        }
+
+        main {
+            max-width: 580px;
+            margin: 0 auto;
+            width: 100%
+        }
+
+        header {
+            margin-bottom: clamp(2rem, 4.5vw, 2.6rem)
+        }
+
+        h1 {
+            font-size: clamp(1.35rem, 3.5vw, 1.7rem);
+            font-weight: 600;
+            color: #2a2a2a;
+            letter-spacing: -0.02em;
+            line-height: 1.25;
+            word-wrap: break-word
+        }
+
+        section {
+            margin-bottom: clamp(2rem, 4.5vw, 2.6rem)
+        }
+
+        h2 {
+            font-size: clamp(0.95rem, 2vw, 1rem);
+            font-weight: 600;
+            color: #2a2a2a;
+            margin-bottom: 1rem
+        }
+
+        p {
+            margin-bottom: 0.95rem
+        }
+
+        p:last-child {
+            margin-bottom: 0
+        }
+
+        strong {
+            font-weight: 600;
+            color: #2a2a2a
+        }
+
+        /* Name and description share a line; weight and tone separate them. */
+        .item {
+            margin-bottom: 0.75rem;
+            line-height: 1.55
+        }
+
+        .item:last-child {
+            margin-bottom: 0
+        }
+
+        .name {
+            font-weight: 600;
+            color: #2a2a2a
+        }
+
+        .desc {
+            font-size: clamp(0.875rem, 1.9vw, 0.925rem);
+            color: #6a6a6a;
+            margin-left: 0.5rem
+        }
+
+        .row {
+            display: flex;
+            align-items: baseline;
+            justify-content: space-between;
+            gap: 1rem
+        }
+
+        .more {
+            font-weight: 400;
+            font-size: clamp(0.875rem, 1.9vw, 0.925rem)
+        }
+
+        footer {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.75rem 1.5rem;
+            margin-top: clamp(2.75rem, 6vw, 3.5rem)
+        }
+
+        a {
+            color: #4a4a4a;
+            text-decoration: underline;
+            text-decoration-color: #b0b0b0;
+            text-underline-offset: 3px;
+            -webkit-tap-highlight-color: transparent
+        }
+
+        a:hover {
+            text-decoration-color: #4a4a4a
+        }
+
+        a:focus-visible {
+            outline: 2px solid #4a4a4a;
+            outline-offset: 2px;
+            border-radius: 2px
+        }
+
+        .name a {
+            color: #2a2a2a
+        }
+
+        @media(max-width:420px) {
+            .desc {
+                display: block;
+                margin-left: 0
+            }
+        }
+
+        /* Short desktop screens: tighten vertical rhythm so the homepage fits without scrolling. */
+        @media(min-width:600px) and (max-height:860px) {
+            body {
+                padding-top: 1.75rem;
+                padding-bottom: 1.5rem
+            }
+
+            header,
+            section {
+                margin-bottom: 1.5rem
+            }
+
+            footer {
+                margin-top: 2.25rem
+            }
+        }
+
+        @media(prefers-reduced-motion:reduce) {
+            * {
+                transition: none !important
+            }
+
+            body::before {
+                background-image: url(/andes-still.svg)
+            }
+        }
+
+        @media print {
+            body {
+                background: #fff;
+                color: #000;
+                padding: 1rem
+            }
+
+            a {
+                color: #000;
+                text-decoration: underline
+            }
+
+            body::before {
+                display: none
+            }
+        }
     </style>
 
     <script type="application/ld+json">
@@ -61,17 +229,17 @@
         "@context": "https://schema.org",
         "@type": "Person",
         "name": "Juan M. Rada León",
-        "jobTitle": "Senior Software Engineer",
+        "jobTitle": "Senior Applied AI Software Engineer",
         "worksFor": {
             "@type": "Organization",
-            "name": "JP Morgan Chase"
+            "name": "JPMorganChase"
         },
-        "url": "https://jrada.dev",
+        "url": "https://radaleon.com",
         "sameAs": [
             "https://github.com/jmrada14",
             "https://www.linkedin.com/in/juan-rada-le%C3%B3n-4b997b190/"
         ],
-        "knowsAbout": ["AI Engineering", "Fintech", "Payment Systems", "Full-Stack Development", "Cloud Infrastructure"]
+        "knowsAbout": ["Applied AI", "AI Engineering", "Fintech", "Payment Systems", "Full-Stack Development", "Cloud Infrastructure"]
     }
     </script>
 </head>
@@ -84,69 +252,34 @@
 
         <section>
             <p>
-                Programmer and technologist from the Venezuelan Andes.
-                Currently at <strong>JP Morgan Chase</strong>, working on merchant and payment services.
+                Programmer, technologist, and maker of things.
+                Currently building tools to improve the experience for merchants and their
+                agents at <strong>JPMorganChase</strong>.
             </p>
             <p>
-                Background in fintech, product engineering, AI engineering, full-stack development, cloud
-                infrastructure, and security.
+                Before that I built and consulted across fintech, insurance, and energy, working on AI systems,
+                developer tooling, and the platforms underneath them. I like to dig into a domain until I
+                actually understand it.
             </p>
             <p>
-                Interested in building AI-powered products and tools, and the adoption of AI in software engineering.
+                I stay close to the code, but mostly I orchestrate agents now: designing how they execute, and
+                building the guardrails, tests, and adversarial review that validate their work.
             </p>
         </section>
 
         <section>
             <h2>Experience</h2>
-
-            <article>
-                <h3>JP Morgan Chase</h3>
-                <p class="role">Sr. Software Engineer — Payments, AI, Full-Stack, Cloud</p>
-            </article>
-
-            <article>
-                <h3>Infosys</h3>
-                <p class="clients">BP, Allstate</p>
-                <p class="role">Consultant — AI/ML, Full-Stack, Cloud</p>
-            </article>
+            <p class="item"><span class="name">JPMorganChase</span><span class="desc">Sr. Software Engineer, applied AI
+                    and payments</span></p>
+            <p class="item"><span class="name">Infosys</span><span class="desc">Consultant in AI/ML and full-stack for
+                    BP and Allstate</span></p>
         </section>
 
-        <section>
-            <h2>Projects</h2>
-
-            <article>
-                <h3><a href="https://github.com/jmrada14/trapattoni">Trapattoni</a></h3>
-                <p class="role">Native iOS and macOS app for football training</p>
-            </article>
-
-            <article>
-                <h3><a href="https://github.com/jmrada14/atelier">Atelier</a></h3>
-                <p class="role">Studio companion app for artists to manage their creative practice</p>
-            </article>
-
-            <article>
-                <h3><a href="https://github.com/jmrada14/limen">Limen</a></h3>
-                <p class="role">macOS menubar app for system monitoring with anomaly detection</p>
-            </article>
-
-            <article>
-                <h3><a href="https://github.com/jmrada14/groq-ocr">groq-ocr</a></h3>
-                <p class="role">Library and CLI for OCR using Groq models</p>
-            </article>
-
-            <article>
-                <h3><a href="https://github.com/jmrada14/cc_validator">cc_validator</a></h3>
-                <p class="role">A Rust library for credit card validation</p>
-            </article>
-        </section>
-
-        <section>
-            <h2>Connect</h2>
-            <nav>
-                <a href="https://github.com/jmrada14">GitHub</a>
-                <a href="https://www.linkedin.com/in/juan-rada-le%C3%B3n-4b997b190/">LinkedIn</a>
-            </nav>
-        </section>
+        <!--{{writing}}-->
+        <footer>
+            <a href="https://github.com/jmrada14">GitHub</a>
+            <a href="https://www.linkedin.com/in/juan-rada-le%C3%B3n-4b997b190/">LinkedIn</a>
+        </footer>
     </main>
 </body>
 

@@ -1,0 +1,15 @@
+{
+  "name": "jrada-dev",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build": "node build.js",
+    "dev": "npm run dev:build & npm run dev:serve",
+    "dev:build": "node --watch-path=build.js --watch-path=posts --watch-path=templates --watch-path=index.html --watch-path=404.html --watch-path=robots.txt build.js",
+    "dev:serve": "browser-sync start --config bs-config.cjs"
+  },
+  "devDependencies": {
+    "browser-sync": "^3.0.4",
+    "marked": "^18.0.0"
+  }
+}
